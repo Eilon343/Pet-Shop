@@ -1,0 +1,44 @@
+﻿@model Pet_Shop.Models.User
+@{
+    ViewData["Title"] = "Register";
+}
+
+<form method="post" enctype="multipart/form-data" asp-controller="Account" asp-action="Register">
+    <div class="container mt-5">
+        <h1 class="heading">Register</h1>
+        <div class="row justify-content-center">
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div asp-validation-summary="All" class="text-danger">
+
+                        </div>
+                        <h4 class="text-danger">@ViewData["Failure"]</h4>
+                        <h4 class="text-danger">@ViewData["FileMessage"]</h4>
+                        <div class="col-md-12">
+                            <label class="form-label" for="name">Username</label>
+                            <input asp-for="@Model.Username" type="text" class="form-control" id="name" />
+                            <span class="text-danger" asp-validation-for="@Model.Username"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="age">Password</label>
+                            <input asp-for="@Model.Password" type="password" class="form-control" id="age" />
+                            <span class="text-danger" asp-validation-for="@Model.Password"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="roles">Roles</label>
+                            <select name="roleId" id="roles" class="form-select">
+                                <option value="1">Normal User</option>
+                                <option value="2">Administrator</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary edit-btn">Register</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+

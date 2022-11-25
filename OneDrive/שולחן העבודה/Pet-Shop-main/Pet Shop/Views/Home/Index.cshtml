@@ -1,0 +1,23 @@
+﻿@using System.Diagnostics
+@model IEnumerable<Pet_Shop.Models.Animal>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1 class="heading">Popular Animals in the shop</h1>
+<div class="row  row-cols-lg-2">
+    @foreach (var Animal in Model)
+    {
+        <div class="col slide-in-fwd-center">
+            <div class="card text-center border-dark scale-up-center slide-in-fwd-center card-home">
+                <img style="max-height:230px; max-width:250px;" width="200" height="100" src="~/Images/Animals/@Animal.PictureName" class="card-img-top catalog mx-auto"
+                 alt="@Animal.Name Image"/>
+                <div class="card-body">
+                    <h4 class="card-title card-header text-dark">@Animal.Name have @Animal.Comments!.Count() comments</h4>
+                    <p class="card-text">@Animal.Description</p>
+                </div>
+                <a asp-controller="Catalog" asp-action="Details" asp-route-id="@Animal.AnimalId" class="btn btn-primary btn-home">For more details Cilck here</a>
+            </div>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,63 @@
+﻿@using Pet_Shop.Models
+@model Tuple<Animal, Comment>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="heading">Detalis for @Model.Item1.Name</h1>
+<div class="table-div">
+<table class="table custom-table table-hover">
+        <thead>
+            <tr class="table-heading">
+                <th scope="col">Portrait</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th><img width="300" height="300" src="~/Images/Animals/@Model.Item1.PictureName" class="home" /></th>
+                <th>@Model.Item1.Name</th>
+                <th>@Model.Item1.Age</th>
+                <th>@Model.Item1.Description</th>
+                <th>@Model.Item1.Category!.Name</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="comment-div">
+    <table class="comment-table">
+        <thead>
+            <tr>
+                <th>Comments on @Model.Item1.Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Comment in @Model.Item1.Comments!)
+            {
+                <tr>
+                    <th>@Comment.Text</th>
+                </tr>
+            }
+            <tr>
+                <th>
+                    @using (Html.BeginForm("SubmitComment", "Catalog", new { animalId = Model.Item1.AnimalId }, FormMethod.Post))
+                    {
+                        @Html.TextBox("comment", null, new { animalId = Model.Item1.AnimalId, required = "required", placeholder = "Write a comment"})
+                        <div class="comment-btn">
+                            <input asp-for="@Model.Item2.Text" class="btn btn-dark comment-btn" type="submit" value="Add Comment" />
+                            <span class="text-danger" asp-validation-for="@Model.Item2.Text"></span>
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger"})
+                        </div>
+                    }
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+                     

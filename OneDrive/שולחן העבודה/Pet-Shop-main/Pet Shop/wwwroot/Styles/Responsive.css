@@ -1,0 +1,66 @@
+﻿/*Mobile View*/
+@media only screen and (max-width: 760px) {
+    td, tr {
+        display: block;
+    }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        border: 1px solid black;
+    }
+
+        tr + tr {
+            margin-top: 1.5em;
+        }
+
+    td {
+        /* make like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        background-color: #F8D9D5;
+        text-align: left;
+    }
+
+        td:before {
+            content: attr(data-label);
+            display: inline-block;
+            line-height: 1.5;
+            margin-left: -100%;
+            width: 100%;
+            white-space: nowrap;
+        }
+}
+/*Laptop View*/
+@media only screen and (max-width: 1360px) {
+    .comment-table {
+        max-width: 550px;
+        margin-bottom: 30px;
+    }
+
+    .card-home {
+        width: 600px;
+        height: 600px;
+        margin: 0 auto;
+    }
+
+    .btn-home {
+        width: 226px;
+        margin: 20px auto;
+    }
+
+    .custom-table {
+        max-width: 90%;
+        font-size: 0.8em;
+    }
+
+    .heading {
+        padding: 5px 5px;
+    }
+}
